@@ -20,8 +20,8 @@ class Solution:
             if next2!=None:
                 next2 = next2.next
             if next1!= None or next2!=None or retenue!=0:
-                newNode = ListNode()
-                currentNode.next = newNode
-                currentNode = newNode
+                currentNode.next = ListNode()
+                currentNode = currentNode.next
         return firstNode
                 
+  
