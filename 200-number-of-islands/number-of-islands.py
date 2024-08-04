@@ -15,9 +15,7 @@ class Solution:
     def erase_connected_component(self, grid, pos):
         #print(f"pos {pos}")
         to_be_checked = {pos}
-        counter = 0
         while len(to_be_checked) != 0:
-            counter+=1
             # print(f"grid inside loop iteration {counter} \n{grid}")
             # print(f" to be checked {to_be_checked}")
             cur = to_be_checked.pop()
@@ -30,21 +28,14 @@ class Solution:
 
     def ones_in_neighbors(self, grid, pos):
         ones = set()
-        neighbors = []
-        if pos[0]>0:
-            neighbors += [(pos[0]-1,pos[1])]
-        if pos[0]<len(grid)-1:
-            neighbors += [(pos[0]+1,pos[1])]
-        if pos[1]>0:
-            neighbors += [(pos[0],pos[1]-1)]
-        if pos[1]<len(grid[0])-1:
-            neighbors += [(pos[0],pos[1]+1)]
-        for neighbor in neighbors:
-            if grid[neighbor[0]][neighbor[1]] == "1":
-                ones.add(neighbor)
-        # print(f"---\n pos {pos}")
-        # print(f"grid \n{np.array(grid)}")
-        # print(f"ones {ones}")
+        if pos[0]>0 and grid[pos[0]-1][pos[1]] == "1":
+            ones.add((pos[0]-1,pos[1]))
+        if pos[0]<len(grid)-1 and grid[pos[0]+1][pos[1]] == "1":
+            ones.add((pos[0]+1,pos[1]))
+        if pos[1]>0 and grid[pos[0]][pos[1]-1] == "1":
+            ones.add((pos[0],pos[1]-1))
+        if pos[1]<len(grid[0])-1 and grid[pos[0]][pos[1]+1] == "1":
+            ones.add((pos[0],pos[1] +1))       
         return ones
 
 
